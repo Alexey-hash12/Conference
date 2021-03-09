@@ -1,0 +1,1825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Банки Витебск</title>
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<script src="eel.js"></script>
+	<link rel="icon" type="image/png" href="/favicon.png">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+</head>
+<body>
+	<button class="btn" id='btn'>☰</button>
+	<nav id='nav'>
+		<ul id='tabs'>
+			<li class="tab whiteborder" id="form-title">Форма поиска</li>
+			<li class="tab">Банк Добробыт</li>
+			<li class="tab">Альфа Банк</li>
+			<li class="tab">МТБанк</li>
+			<li class="tab">Беларусбанк (1)</li>
+			<li class="tab">Беларусбанк (2)</li>
+			<li class="tab">Технобанк</li>
+			<li class="tab">Белгазпромбанк</li>
+			<li class="tab">БелИнвестБанк(1)</li>
+			<li class="tab">БелИнвестБанк(2)</li>
+			<li class="tab">ПриорБанк</li>
+			<li class="tab">БПС-Сбербанк</li>
+			<li class="tab">БТА Банк</li>
+			<li class="tab">БНБ Банк</li>
+			<li class="tab">ПаритетБанк</li>
+			<li class="tab">ВТБ Банк</li>
+			<li class="tab">Белаграпром Банк</li>
+			<img class='tab' id='config' src="settings.png">
+			<img class='tab' id='calc' src="calculator.png">
+			<li class="tab" id="form-title"></li>
+		</ul>
+	</nav>
+	<ul id="tabs">
+		<li id='tabContent' class="tabContent firstContent">
+			<!-- <input type="text" id="input_address" placeholder="Введите улицу"> -->
+			<!-- <div>Пример: ул Тостого; проспект Фрунзе</div> -->
+			<div id='suc' class="success">Банк успешно найден</div>
+			<div id='err' class="error">Банк не найден</div>
+			<div id="load" class="load"></div>
+			<ul id='me'>
+				<div class="nav_title">
+					<li class="norm nice" id="deposits_title">Вклады</li>
+					<li class="norm" id="credit_title">Обмен Валют</li>
+					<li class="norm" id="change_title">Кредиты</li>
+					<li class="norm" id="change_title" style="list-style-type:  none"></li>
+				</div>
+				<li id='content' class="content">
+					<h2 class="title">Заполните форму</h2>
+					<div class="Dep_pages" id='Dep_pages'>
+						<div class="dep_container"></div>
+						<div class="container__dep">
+							<h2 class="value_of_deposits">Выберите валюту вклада</h2>
+							<input class="value_of_deposits_input" type="text" id="input_value_of_deposits" placeholder="Пример: Белорусский рубль">
+							<ul class="currency_nav">
+								<li style="list-style: circle" class="currency_bel_text" id="currency_bel_text">Белорусский рубль(BYN)</li>
+								<li style="list-style: circle" class="currency_usa_text" id="currency_usa_text">Американский доллар(USD)</li>
+								<li style="list-style: circle" class="currency_eur_text" id="currency_eur_text">Евро(EUR)</li>
+								<li style="list-style: circle" class="currency_rub_text" id='currency_rub_text'>Российский рубль(RUB)</li>
+							</ul>
+						</div>
+						<div class="dep_container_1"></div>
+						<div class="container__dep_1">
+							<ul class="left_inner_term">
+								<li style="list-style: circle" class="term_text_1" id='term_text_1'>1 месяц</li>
+								<li style="list-style: circle" class="term_text_6" id="term_text_6">6 месяцев</li>
+								<li style="list-style: circle" class="term_text_15" id='term_text_15'>1.5 года</li>
+								<li style="list-style: circle" class="term_text_30" id='term_text_30'>3 года</li>
+							</ul>
+							<ul class="right_inner_term">
+								<li style="list-style: circle" class="term_text_11" id='term_text_11'>1 год</li>
+								<li style="list-style: circle" class="term_text_3" id='term_text_3'>3 месяца</li>
+								<li style="list-style: circle" class="term_text_20" id='term_text_20'>2 года</li>
+							</ul>
+
+							<h2 class="term_of_deposits">Выберите срок вклада</h2>
+							<input type="text" class="input_term_of_deposits" id="input_term_of_deposits" placeholder="Пример: 1 месяц">
+						</div>
+						<h2 class="def_of_deposits">Выберите доп параметры</h2>
+						<div class="dep_container_2"></div>
+						<div class="container__dep_2">
+							<h2 class="type_of_deposits">Введите тип вклада</h2>
+							<input type="text" id="input_return_of_deposits" class="input_return_of_deposits" placeholder="Пример: Безотзывной">
+							<ul class="return_nav">
+								<li style="list-style: circle" class="return_text_1" id="return_text_1">Безотзывной</li>
+								<li style="list-style: circle" class="return_text_2" id="return_text_2">Отзывной</li>
+							</ul>
+						</div>
+						<div class="dep_container_3"> </div>
+						<div class="container__dep_3">
+							<h3 class="type_of_rate">Введите вид ставки</h3>
+							<input type="text" id="input_type_of_deposits" class="input_type_of_deposits"  placeholder="Пример: Фиксированная">
+							<ul class="rate_nav">
+								<li style="list-style: circle" class="rate_text_1" id="rate_text_1">Фиксированная</li>
+								<li style="list-style: circle" class="rate_text_2" id="rate_text_2">Плавающая</li>
+							</ul>
+						</div>
+					</div>
+					<button class="btn_checked" id="btn_checked">Найти Банк</button>
+					<input type="hidden" name="" id='value'>
+				</li>
+				<li id="content" class="content">
+					<h2 class="title">Заполните форму</h2>
+					<div class="Dep_pages_1">
+						<div class="dep_container_1_1"></div>
+						<div class="dep_content">
+							<h3 class="currency_value">Введите валюту</h3>
+							<input type="text" id="input_currency_value" class="input_currency_value"  placeholder="Пример: Американский доллар">
+							<ul class="currency_nav_1">
+								<li style="list-style: circle" class="currency_usa_text" id="currency_usa_text_1">Американский доллар(USA)</li>
+								<li style="list-style: circle" class="currency_eur_text" id="currency_eur_text_1">Евро(EUR)</li>
+								<li style="list-style: circle" class="currency_rub_text" id='currency_rub_text_1'>Российский рубль(RUB)</li>
+							</ul>
+						</div>
+						<div class="dep_container_1_2"></div>
+						<div class="dep_content_1">
+							<h3 class="currency_def">Введите операцию</h3>	
+							<input type="text" id="input_currency_def" class="input_currency_def"  placeholder="Пример: Покупка">
+							<ul class="left_inner_term_1">
+								<li style="list-style: circle" class="term_text_1" id='def_text_1'>Покупка</li>
+								<li style="list-style: circle" class="term_text_6" id="def_text_2">Продажа</li>
+							</ul>	
+						</div>	
+						<button class='btn_checked' id='btn_checked_1'>Найти Банк</button>
+					</div>
+				</li>
+				<li id="content" class="content">
+					<h2 class="title">Заполните форму</h2>
+					<div class="Dep_pages_1">
+						<h2 class="def_of_deposits_1">Выберите тип кредита</h2>
+						<div class="dep_container_1_1"></div>
+						<div class="dep_content">
+							<h3 class="currency_value">Потребительский</h3>
+							<input type="text" id="input_credit_potr" class="input_credit_potr"  placeholder="Пример: Потребительский">
+							<ul class="currency_nav_1">
+								<li style="list-style: circle" class="currency_usa_text" id="credit_potr_text_1">Потребительский</li>
+							</ul>
+						</div>
+						<div class="dep_container_1_2"></div>
+						<div class="dep_content_1">
+							<h3 class="currency_def">Бизнес-кредит</h3>	
+							<input type="text" id="input_credit_def" class="input_credit_def"  placeholder="Пример: На развитие">
+							<ul class="left_inner_term_1">
+								<li style="list-style: circle" class="term_text_35" id='cred_text_1'>На развитие</li>
+								<li style="list-style: circle" class="term_text_62" id="cred_text_2">На автомобиль</li>
+								<li style="list-style: circle" class="term_text_62" id="cred_text_3">На жилье</li>
+							</ul>	
+						</div>	
+						<button class='btn_checked' id='btn_checked_2'>Найти Банк</button>
+					</div>
+				</li>
+				<li id="content" class="content">
+				</li>
+			</ul>
+		</li>
+
+		<li id='tabContent' class="tabContent">
+			<div class="header">
+				<div class="inner">
+					<a class='name' href="#">Банк Добробыт</a>
+					<svg class='star_1' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+					</svg>
+					<p class="star-text_1">4.0</p>
+					<svg class='phone_1' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+						<path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+					</svg>
+					<p class="phone-text_1"> +375 21 260-16-14</p>
+					<section>
+						<h1 class="services">Услуги</h1>
+						<svg class='services_image_4'xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+						</svg>
+						<h3 class="services_text_4" id="done3">Оформление Карточек</h3>
+						<div class="services_content_4" id="done_content3">
+							<p>Заказ карточки онлайн</p>
+							<p>Даставка карточки на дом</p>
+						</div>
+						<svg class='services_image_1' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+						</svg>
+						<h3 class="services_text_1" id="done">Денежные переводы</h3>
+						<div class="services_content_1" id="done_content">
+							<p>Перевести деньги на карту</p>
+							<p>Перевести деньги на телефон</p>
+						</div>
+						<svg class='services_image_2' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+						</svg>
+						<h3 class="services_text_2" id="done1">Вклады онлайн</h3>
+						<div class="services_content_2" id="done_content1">
+							<p>Накопительный(Вал)</p>
+							<p>Сберегательный</p>
+						</div>
+						<svg class='services_image_3' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+						</svg>
+						<h3 class="services_text_3" id="done2">Кредиты онлайн</h3>
+						<div class="services_content_3" id="done_content2">
+							<p>Оформить кредит</p>
+							<p>Оплатить кредит</p>
+						</div>
+					</section>
+				</div>
+				<div id="yandexmap" class="image_first" style="width: 380px; height: 230px"></div>
+				<div class="money_value">
+					<div class="money_header">
+						<h1 class="money_title">Курс валюты в банке</h1>
+						<h1 class="money_buy">Продажа</h1>
+						<h1 class="money_out">Покупка</h1>
+					</div>
+					<div class="money_dollar">
+						1 USD
+					</div>
+					<div class="money_evro">
+						1 EUR
+					</div>
+					<div class="money_rub">
+						100 RUB
+					</div>
+					<button class="btn_get_currency" id="btn_get_currency">Узнать</button>
+					<div id="load_currency" class="load"></div>
+					<input type="hidden" name="" id='value'>
+					<div class="info1" id="info"></div>
+				</div>
+			</div>
+		</li>
+
+		<li id='tabContent' class="tabContent">
+			<div class="header_1">
+				<div class="inner">
+					<a class='name_1' href="#">Альфа Банк</a>
+					<svg class='star' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+					</svg>
+					<p class="star-text">4.1</p>
+
+					<svg class='phone' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+						<path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+					</svg><p class="phone-text"> +375 29 733 33 32</p>
+					<section>
+						<h1 class="services">Услуги</h1>
+						<svg class='services_1_image_1' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+						</svg>
+						<h3 class="services_1_text_1" id='done4'>Кредиты онлайн</h3>
+						<div class="services_1_content_1" id="done_content4">
+							<p>Онлайн кредит</p>
+							<p>Кредит наличными</p>
+						</div>
+						<svg class='services_1_image_2' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+						</svg>
+						<h3 class="services_1_text_2" id='done5'>Вклады</h3>
+						<div class="services_1_content_2" id="done_content5">
+							<p>Накопительные</p>
+							<p>Валютные</p>
+						</div>
+						<svg class='services_1_image_3' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+						</svg>
+						<h3 class="services_1_text_3" id='done6'>Мобильный Банк</h3>
+						<div class="services_1_content_3" id="done_content6">
+							<p>Онлайн страхование выезжающих за границу</p>
+							<p>Онлайн страхование жилья</p>
+						</div>
+						<svg class='services_1_image_4' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+						</svg>
+						<h3 class="services_1_text_4" id='done7'>Инвестиции</h3>
+						<div class="services_1_content_4" id="done_content7">
+							<p>Инвестиции онлайн</p>
+							<p>Доверительное управление</p>
+						</div>
+					</section>
+				</div>
+				<div id="yandexmap_1" class="image_first" style="width: 380px; height: 230px"></div>
+				<div class="money_value">
+					<div class="money_header">
+						<h1 class="money_title_1">Курс валюты в банке</h1>
+						<h1 class="money_buy">Продажа</h1>
+						<h1 class="money_out">Покупка</h1>
+					</div>
+					<div class="money_dollar">
+						1 USD
+					</div>
+					<div class="money_evro">
+						1 EUR
+					</div>
+					<div class="money_rub">
+						100 RUB
+					</div>
+					<button class="btn_get_currency" id="btn_get_currency1">Узнать</button>
+					<div id="load_currency1" class="load"></div>
+					<input type="hidden" name="" id='value'>
+					<div class="info" id="info1"></div>
+				</div>
+			</div>
+		</li>
+
+		<li id='tabContent' class="tabContent">
+			<div class="header_2">
+				<div class="inner">
+					<a class='name_2' href="#">МТБанк</a>
+					<svg class='star_1' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+					</svg>
+					<p class="star-text_1">4.1</p>
+
+					<svg class='phone_1' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+						<path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+					</svg><p class="phone-text_1"> +375 21 266-31-31</p>
+					<section>
+						<h1 class="services">Услуги</h1>
+						<svg class='services_2_image_1'xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+						</svg>
+						<h3 class="services_2_text_1" id='done8'>Страхование</h3>
+						<div class="services_2_content_1" id="done_content8">
+							<p>Страхование имущества</p>
+							<p>Медицинское страхование</p>
+						</div>
+						<svg class='services_2_image_2' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+						</svg>
+						<h3 class="services_2_text_2" id='done9'>Вклады</h3>
+						<div class="services_2_content_2" id="done_content9">
+							<p>Накопительные/Сберегательные</p>
+							<p>Валютные</p>
+						</div>
+						<svg class='services_2_image_3'xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+						</svg>
+						<h3 class="services_2_text_3" id='done10'>Онлайн переводы</h3>
+						<div class="services_2_content_3" id="done_content10">
+							<p>Переводы с карты на карту</p>
+							<p>Перевод в 61 страну мира</p>
+						</div>
+						<svg class='services_2_image_4' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+						</svg>
+						<h3 class="services_2_text_4" id='done11'>Инвестиции</h3>
+						<div class="services_2_content_4" id="done_content11">
+							<p>Инвестиции онлайн</p>
+							<p></p>
+						</div>
+					</section>
+				</div>
+				<div id="yandexmap_2" class="image_first" style="width: 380px; height: 230px"></div>
+				<div class="money_value">
+					<div class="money_header">
+						<h1 class="money_title_2">Курс валюты в банке</h1>
+						<h1 class="money_buy">Продажа</h1>
+						<h1 class="money_out">Покупка</h1>
+					</div>
+					<div class="money_dollar">
+						1 USD
+					</div>
+					<div class="money_evro">
+						1 EUR
+					</div>
+					<div class="money_rub">
+						100 RUB
+					</div>
+					<button class="btn_get_currency" id="btn_get_currency2">Узнать</button>
+					<div id="load_currency2" class="load"></div>
+					<input type="hidden" name="" id='value'>
+					<div class="info" id="info2"></div>
+				</div>
+			</div>
+		</li>
+
+		<li id='tabContent' class="tabContent">
+			<div class="header_3">
+				<div class="inner">
+					<a class='name_2' href="#">Беларусбанк</a>
+					<svg class='star_1' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+					</svg>
+					<p class="star-text_1">4.1</p>
+
+					<svg class='phone_1' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+						<path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+					</svg><p class="phone-text_1"> +375 17 218 84 31</p>
+					<section>
+						<h1 class="services">Услуги</h1>
+						<svg class='services_12_image_1' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+						</svg>
+						<h3 class="services_2_text_1" id='done12'>Кредиты</h3>
+						<div class="services_2_content_1" id="done_content12">
+							<p>Потребительские кредиты</p>
+							<p>Онлайн кредитование</p>
+						</div>
+						<svg class='services_12_image_2' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+						</svg>
+						<h3 class="services_2_text_2" id='done13'>Вклады</h3>
+						<div class="services_2_content_2" id="done_content13">
+							<p>Накопительный/Сберегательный</p>
+							<p>Бизнес-Кредит</p>
+						</div>
+						<svg class='services_12_image_3'xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
+						</svg>
+						<h3 class="services_2_text_3" id='done14'>РКО</h3>
+						<div class="services_2_content_3" id="done_content14">
+							<p>Малый и крупный бизнес</p>
+							<p>от 5 до 300 платежей в месяц</p>
+						</div>
+						<svg class='services_12_image_4'xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+						</svg>
+						<h3 class="services_2_text_4" id='done15'>Карточки</h3>
+						<div class="services_2_content_4" id="done_content15">
+							<p>Кредитные карты</p>
+							<p>Дебетовые карты</p>
+						</div>
+					</section>
+				</div>
+				<div id="yandexmap_3" class="image_first" style="width: 380px; height: 230px"></div>
+				<div class="money_value">
+					<div class="money_header">
+						<h1 class="money_title_2">Курс валюты в банке</h1>
+						<h1 class="money_buy">Продажа</h1>
+						<h1 class="money_out">Покупка</h1>
+					</div>
+					<div class="money_dollar">
+						1 USD
+					</div>
+					<div class="money_evro">
+						1 EUR
+					</div>
+					<div class="money_rub">
+						100 RUB
+					</div>
+					<button class="btn_get_currency" id="btn_get_currency3">Узнать</button>
+					<div id="load_currency3" class="load"></div>
+					<input type="hidden" name="" id='value'>
+					<div class="info" id="info3"></div>
+				</div>
+			</div>
+		</li>
+
+		<li id='tabContent' class="tabContent">
+			<div class="header_3_1">
+				<div class="inner">
+					<a class='name_2' href="#">Беларусбанк</a>
+					<svg class='star_1' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+					</svg>
+					<p class="star-text_1">4.1</p>
+
+					<svg class='phone_1' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+						<path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+					</svg><p class="phone-text_1"> +375 212 20 47 55</p>
+					<section>
+						<h1 class="services">Услуги</h1>
+						<svg class='services_12_image_1' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+						</svg>
+						<h3 class="services_2_text_1" id='done16'>Кредиты</h3>
+						<div class="services_2_content_1" id="done_content16">
+							<p>Автокредит/жилье в кредит</p>
+							<p>Онлайн кредитование</p>
+						</div>
+						<svg class='services_12_image_2' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+						</svg>
+						<h3 class="services_2_text_2" id='done17'>Вклады</h3>
+						<div class="services_2_content_2" id="done_content17">
+							<p>Накопительный/Сберегательный</p>
+							<p>Бизнес-Кредит</p>
+						</div>
+						<svg class='services_12_image_3'xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
+						</svg>
+						<h3 class="services_2_text_3" id='done18'>РКО</h3>
+						<div class="services_2_content_3" id="done_content18">
+							<p>Малый и крупный бизнес</p>
+							<p>от 5 до 300 платежей в месяц</p>
+						</div>
+						<svg class='services_12_image_4'xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+						</svg>
+						<h3 class="services_2_text_4" id='done19'>Карточки</h3>
+						<div class="services_2_content_4" id="done_content19">
+							<p>Кредитные карты</p>
+							<p>Дебетовые карты</p>
+						</div>
+					</section>
+				</div>
+				<div id="yandexmap_4" class="image_first" style="width: 380px; height: 230px"></div>
+				<div class="money_value">
+					<div class="money_header">
+						<h1 class="money_title_2">Курс валюты в банке</h1>
+						<h1 class="money_buy">Продажа</h1>
+						<h1 class="money_out">Покупка</h1>
+					</div>
+					<div class="money_dollar">
+						1 USD
+					</div>
+					<div class="money_evro">
+						1 EUR
+					</div>
+					<div class="money_rub">
+						100 RUB
+					</div>
+					<button class="btn_get_currency" id="btn_get_currency4">Узнать</button>
+					<div id="load_currency4" class="load"></div>
+					<input type="hidden" name="" id='value'>
+					<div class="info" id="info4"></div>
+				</div>
+			</div>
+		</li>
+
+		<li id='tabContent' class="tabContent">
+			<div class="header_13">
+				<div class="inner">
+					<a class='name_2' href="#">Технобанк</a>
+					<svg class='star_1' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+					</svg>
+					<p class="star-text_1">4.1</p>
+
+					<svg class='phone_1' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+						<path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+					</svg><p class="phone-text_1">+375 21 261 22 00</p>
+					<section>
+						<h1 class="services">Услуги</h1>
+						<svg class='services_3_image_1' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+						</svg>
+						<h3 class="services_2_text_1" id='done20'>Кредиты</h3>
+						<div class="services_2_content_1" id="done_content20">
+							<p>Потребительские кредиты</p>
+							<p>Автокредит</p>
+						</div>
+						<svg class='services_3_image_2' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+						</svg>
+						<h3 class="services_2_text_2" id='done21'>Вклады</h3>
+						<div class="services_2_content_2" id="done_content21">
+							<p>Накопительные(Валютные)</p>
+							<p>Бизнес/Сберегательные</p>
+						</div>
+						<svg class='services_3_image_3'xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+						</svg>
+						<h3 class="services_2_text_3" id='done22'>Переводы</h3>
+						<div class="services_2_content_3" id="done_content22">
+							<p>Юнистрим</p>
+							<p>Золотая Корона</p>
+						</div>
+						<svg class='services_3_image_4'xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+						</svg>
+						<h3 class="services_2_text_4" id='done23'>Карточки</h3>
+						<div class="services_2_content_4" id="done_content23">
+							<p>Visa</p>
+							<p>EuroCard/Mastercard</p>
+						</div>
+					</section>
+				</div>
+				<div id="yandexmap_5" class="image_first" style="width: 380px; height: 230px"></div>
+				<div class="money_value">
+					<div class="money_header">
+						<h1 class="money_title_2">Курс валюты в банке</h1>
+						<h1 class="money_buy">Продажа</h1>
+						<h1 class="money_out">Покупка</h1>
+					</div>
+					<div class="money_dollar">
+						1 USD
+					</div>
+					<div class="money_evro">
+						1 EUR
+					</div>
+					<div class="money_rub">
+						100 RUB
+					</div>
+					<button class="btn_get_currency" id="btn_get_currency5">Узнать</button>
+					<div id="load_currency5" class="load"></div>
+					<input type="hidden" name="" id='value'>
+					<div class="info" id="info5"></div>
+				</div>
+			</div>
+		</li>
+
+		<li id='tabContent' class="tabContent">
+			<div class="header_4">
+				<div class="inner">
+					<a class='name_2' href="#">Белгазпромбанк</a>
+					<svg class='star_1' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+					</svg>
+					<p class="star-text_1">4.2</p>
+
+					<svg class='phone_1' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+						<path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+					</svg><p class="phone-text_1"> +375 29 249 39 29</p>
+					<section>
+						<h1 class="services">Услуги</h1>
+						<svg class='services_2_image_1' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+						</svg>
+						<h3 class="services_2_text_1" id='done24'>Кредиты</h3>
+						<div class="services_2_content_1" id="done_content24">
+							<p>Автокредиты</p>
+							<p>Потребительские нужды</p>
+						</div>
+						<svg class='services_2_image_2' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+						</svg>
+						<h3 class="services_2_text_2" id='done25'>Вклады</h3>
+						<div class="services_2_content_2" id="done_content25">
+							<p>Накопительные/Сберегательные</p>
+							<p>Бизнес-Депозит</p>
+						</div>
+						<svg class='services_2_image_3' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+						</svg>
+						<h3 class="services_2_text_3" id='done26'>Интернет-Банк</h3>
+						<div class="services_2_content_3" id="done_content26">
+							<p>Вклады онлайн</p>
+							<p>Страхование онлайн</p>
+						</div>
+						<svg class='services_2_image_4'xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+						</svg>
+						<h3 class="services_2_text_4" id='done27'>Карточки</h3>
+						<div class="services_2_content_4" id="done_content27">
+							<p>Расчетные карты</p>
+							<p>Зарплатные карты</p>
+						</div>
+					</section>
+				</div>
+				<div id="yandexmap_6" class="image_first" style="width: 380px; height: 230px"></div>
+				<div class="money_value">
+					<div class="money_header">
+						<h1 class="money_title_2">Курс валюты в банке</h1>
+						<h1 class="money_buy">Продажа</h1>
+						<h1 class="money_out">Покупка</h1>
+					</div>
+					<div class="money_dollar">
+						1 USD
+					</div>
+					<div class="money_evro">
+						1 EUR
+					</div>
+					<div class="money_rub">
+						100 RUB
+					</div>
+					<button class="btn_get_currency" id="btn_get_currency6">Узнать</button>
+					<div id="load_currency6" class="load"></div>
+					<input type="hidden" name="" id='value'>
+					<div class="info" id="info6"></div>
+				</div>
+			</div>
+		</li>
+
+		<li id='tabContent' class="tabContent">
+			<div class="header_5_1">
+				<div class="inner">
+					<a class='name_2' href="#">Белинвестбанк</a>
+					<svg class='star_1' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+					</svg>
+					<p class="star-text_1">4.3</p>
+
+					<svg class='phone_1' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+						<path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+					</svg><p class="phone-text_1"> +375 17 239-02-39</p>
+					<section>
+						<h1 class="services">Услуги</h1>
+						<svg class='services_4_image_1' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+						</svg>
+						<h3 class="services_2_text_1" id='done28'>Кредиты</h3>
+						<div class="services_2_content_1" id="done_content28">
+							<p>На образование/На жилье</p>
+							<p>Потребительские кредиты</p>
+						</div>
+						<svg class='services_4_image_2' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+						</svg>
+						<h3 class="services_2_text_2" id='done29'>Вклады</h3>
+						<div class="services_2_content_2" id="done_content29">
+							<p>Накопительный/Универсальный</p>
+							<p>Бизнес-Депозит</p>
+						</div>
+						<svg class='services_4_image_3'xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
+						</svg>
+						<h3 class="services_2_text_3" id='done30'>РКО</h3>
+						<div class="services_2_content_3" id="done_content30">
+							<p>Открытие счета онлайн</p>
+							<p>Ип/Стартап</p>
+						</div>
+						<svg class='services_4_image_4'xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+						</svg>
+						<h3 class="services_2_text_4" id='done31'>Карточки</h3>
+						<div class="services_2_content_4" id="done_content31">
+							<p>Кредитные</p>
+							<p>Дебетовые</p>
+						</div>
+					</section>
+				</div>
+				<div id="yandexmap_7" class="image_first" style="width: 380px; height: 230px"></div>
+				<div class="money_value">
+					<div class="money_header">
+						<h1 class="money_title_2">Курс валюты в банке</h1>
+						<h1 class="money_buy">Продажа</h1>
+						<h1 class="money_out">Покупка</h1>
+					</div>
+					<div class="money_dollar">
+						1 USD
+					</div>
+					<div class="money_evro">
+						1 EUR
+					</div>
+					<div class="money_rub">
+						100 RUB
+					</div>
+					<button class="btn_get_currency" id="btn_get_currency7">Узнать</button>
+					<div id="load_currency7" class="load"></div>
+					<input type="hidden" name="" id='value'>
+					<div class="info" id="info7"></div>
+				</div>
+			</div>
+		</li>
+		
+		<li id='tabContent' class="tabContent">
+			<div class="header_5_2">
+				<div class="inner">
+					<a class='name_2' href="#">Белинвестбанк</a>
+					<svg class='star_1' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+					</svg>
+					<p class="star-text_1">4.2</p>
+
+					<svg class='phone_1' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+						<path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+					</svg><p class="phone-text_1"> +375 17 239-02-39</p>
+					<section>
+						<h1 class="services">Услуги</h1>
+						<svg class='services_4_image_1' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+						</svg>
+						<h3 class="services_2_text_1" id='done32'>Кредиты</h3>
+						<div class="services_2_content_1" id="done_content32">
+							<p>На образование/На жилье</p>
+							<p>Потребительские кредиты</p>
+						</div>
+						<svg class='services_4_image_2' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+						</svg>
+						<h3 class="services_2_text_2" id='done33'>Вклады</h3>
+						<div class="services_2_content_2" id="done_content33">
+							<p>Накопительный/Универсальный</p>
+							<p>Срочные вклады</p>
+						</div>
+						<svg class='services_4_image_3'xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
+						</svg>
+						<h3 class="services_2_text_3" id='done34'>РКО</h3>
+						<div class="services_2_content_3" id="done_content34">
+							<p>Открытие счета онлайн</p>
+							<p>Ип/Стартап</p>
+						</div>
+						<svg class='services_4_image_4'xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+						</svg>
+						<h3 class="services_2_text_4" id='done35'>Карточки</h3>
+						<div class="services_2_content_4" id="done_content35">
+							<p>Кредитные</p>
+							<p>Дебетовые</p>
+						</div>
+					</section>
+				</div>
+				<div id="yandexmap_8" class="image_first" style="width: 380px; height: 230px"></div>
+				<div class="money_value">
+					<div class="money_header">
+						<h1 class="money_title_2">Курс валюты в банке</h1>
+						<h1 class="money_buy">Продажа</h1>
+						<h1 class="money_out">Покупка</h1>
+					</div>
+					<div class="money_dollar">
+						1 USD
+					</div>
+					<div class="money_evro">
+						1 EUR
+					</div>
+					<div class="money_rub">
+						100 RUB
+					</div>
+					<button class="btn_get_currency" id="btn_get_currency8">Узнать</button>
+					<div id="load_currency8" class="load"></div>
+					<input type="hidden" name="" id='value'>
+					<div class="info" id="info8"></div>
+				</div>
+			</div>
+		</li>
+		
+		<li id='tabContent' class="tabContent">
+			<div class="header_6">
+				<div class="inner">
+					<a class='name_2' href="#">ПриорБанк</a>
+					<svg class='star_1' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+					</svg>
+					<p class="star-text_1">4.1</p>
+
+					<svg class='phone_1' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+						<path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+					</svg><p class="phone-text_1"> +375 17 289 90 90</p>
+					<section>
+						<h1 class="services">Услуги</h1>
+						<svg class='services_5_image_1' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+						</svg>
+						<h3 class="services_2_text_1" id='done36'>Кредиты</h3>
+						<div class="services_2_content_1" id="done_content36">
+							<p>Бизнес/Автокредит</p>
+							<p>Жилье</p>
+						</div>
+						<svg class='services_5_image_2' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+						</svg>
+						<h3 class="services_2_text_2" id='done37'>Вклады</h3>
+						<div class="services_2_content_2" id="done_content37">
+							<p>Накопительные/Сберегательные</p>
+							<p>Валютные вклады</p>
+						</div>
+						<svg class='services_5_image_3'xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
+						</svg>
+						<h3 class="services_2_text_3" id='done38'>РКО</h3>
+						<div class="services_2_content_3" id="done_content38">
+							<p>Расчеты от покупателей</p>
+							<p>Перевод финансов поставщикам</p>
+						</div>
+						<svg class='services_5_image_4'xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+						</svg>
+						<h3 class="services_2_text_4" id='done39'>Карточки</h3>
+						<div class="services_2_content_4" id="done_content39">
+							<p>Visa/MasterCard</p>
+							<p>Кредитовые/Дебетовые</p>
+						</div>
+					</section>
+				</div>
+				<div id="yandexmap_9" class="image_first" style="width: 380px; height: 230px"></div>
+				<div class="money_value">
+					<div class="money_header">
+						<h1 class="money_title_2">Курс валюты в банке</h1>
+						<h1 class="money_buy">Продажа</h1>
+						<h1 class="money_out">Покупка</h1>
+					</div>
+					<div class="money_dollar">
+						1 USD
+					</div>
+					<div class="money_evro">
+						1 EUR
+					</div>
+					<div class="money_rub">
+						100 RUB
+					</div>
+					<button class="btn_get_currency" id="btn_get_currency9">Узнать</button>
+					<div id="load_currency9" class="load"></div>
+					<input type="hidden" name="" id='value'>
+					<div class="info" id="info9"></div>						
+				</div>
+			</div>
+		</li>
+
+		<li id='tabContent' class="tabContent">
+			<div class="header_7">
+				<div class="inner">
+					<a class='name_2' href="#">БПС-Сбербанк</a>
+					<svg class='star_1' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+					</svg>
+					<p class="star-text_1">4.3</p>
+
+					<svg class='phone_1' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+						<path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+					</svg><p class="phone-text_1"> +375 29 514 81 48</p>
+					<section>
+						<h1 class="services">Услуги</h1>
+						<svg class='services_6_image_1' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+						</svg>
+						<h3 class="services_2_text_1" id='done40'>Кредиты</h3>
+						<div class="services_2_content_1" id="done_content40">
+							<p>Бизнес</p>
+							<p>Автокредит</p>
+						</div>
+						<svg class='services_6_image_2' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+						</svg>
+						<h3 class="services_2_text_2" id='done41'>Вклады</h3>
+						<div class="services_2_content_2" id="done_content41">
+							<p>Накопительный/Универсальный</p>
+							<p>Валютные вклады</p>
+						</div>
+						<svg class='services_6_image_3'xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
+						</svg>
+						<h3 class="services_2_text_3" id='done42'>РКО</h3>
+						<div class="services_2_content_3" id="done_content42">
+							<p>Ип и малый бизнес</p>
+							<p>Средний и круный бизнес</p>
+						</div>
+						<svg class='services_6_image_4'xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+						</svg>
+						<h3 class="services_2_text_4" id='done43'>Карточки</h3>
+						<div class="services_2_content_4" id="done_content43">
+							<p>Visa/MasterCard</p>
+							<p>Кредитовые/Дебетовые</p>
+						</div>
+					</section>
+				</div>
+				<div id="yandexmap_10" class="image_first" style="width: 380px; height: 230px"></div>
+				<div class="money_value">
+					<div class="money_header">
+						<h1 class="money_title_2">Курс валюты в банке</h1>
+						<h1 class="money_buy">Продажа</h1>
+						<h1 class="money_out">Покупка</h1>
+					</div>
+					<div class="money_dollar">
+						1 USD
+					</div>
+					<div class="money_evro">
+						1 EUR
+					</div>
+					<div class="money_rub">
+						100 RUB
+					</div>
+					<button class="btn_get_currency" id="btn_get_currency10">Узнать</button>
+					<div id="load_currency10" class="load"></div>
+					<input type="hidden" name="" id='value'>
+					<div class="info" id="info10"></div>
+				</div>
+			</div>
+		</li>
+
+		<li id='tabContent' class="tabContent">
+			<div class="header_8">
+				<div class="inner">
+					<a class='name_2' href="#">БТА Банк</a>
+					<svg class='star_1' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+					</svg>
+					<p class="star-text_1">3.9</p>
+
+					<svg class='phone_1' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+						<path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+					</svg><p class="phone-text_1">+375 44 528 22 82</p>
+					<section>
+						<h1 class="services">Услуги</h1>
+						<svg class='services_7_image_1' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+						</svg>
+						<h3 class="services_2_text_1" id='done44'>Кредиты</h3>
+						<div class="services_2_content_1" id="done_content44">
+							<p>Бизнес</p>
+							<p>Автокредиты</p>
+						</div>
+						<svg class='services_7_image_2' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+						</svg>
+						<h3 class="services_2_text_2" id='done45'>Вклады</h3>
+						<div class="services_2_content_2" id="done_content45">
+							<p>Валютные вклады</p>
+							<p>Накопительный/Сберегательный</p>
+						</div>
+						<svg class='services_7_image_3'xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
+						</svg>
+						<h3 class="services_2_text_3" id='done46'>РКО</h3>
+						<div class="services_2_content_3" id="done_content46">
+							<p>Бизнес</p>
+							<p>Регилирование денежных операций</p>
+						</div>
+						<svg class='services_7_image_4'xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+						</svg>
+						<h3 class="services_2_text_4" id='done47'>Переводы</h3>
+						<div class="services_2_content_4" id="done_content47">
+							<p>SWIFT/MoneyGram</p>
+							<p>Юнистрим/Золотая Корона</p>
+						</div>
+					</section>
+				</div>
+				<div id="yandexmap_11" class="image_first" style="width: 380px; height: 230px"></div>
+				<div class="money_value">
+					<div class="money_header">
+						<h1 class="money_title_2">Курс валюты в банке</h1>
+						<h1 class="money_buy">Продажа</h1>
+						<h1 class="money_out">Покупка</h1>
+					</div>
+					<div class="money_dollar">
+						1 USD
+					</div>
+					<div class="money_evro">
+						1 EUR
+					</div>
+					<div class="money_rub">
+						100 RUB
+					</div>
+					<button class="btn_get_currency" id="btn_get_currency11">Узнать</button>
+					<div id="load_currency11" class="load"></div>
+					<input type="hidden" name="" id='value'>
+					<div class="info" id="info11"></div>
+				</div>
+			</div>
+		</li>
+
+		<li id='tabContent' class="tabContent">
+			<div class="header_9">
+				<div class="inner">
+					<a class='name_3' href="#">Белорусский Народный Банк</a>
+					<svg class='star_1' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+					</svg>
+					<p class="star-text_1">4.0</p>
+
+					<svg class='phone_1' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+						<path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+					</svg><p class="phone-text_1">+375 33 309 73 09</p>
+					<section>
+						<h1 class="services">Услуги</h1>
+						<svg class='services_8_image_1' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+						</svg>
+						<h3 class="services_2_text_1" id='done48'>Кредиты</h3>
+						<div class="services_2_content_1" id="done_content48">
+							<p>Потребительский</p>
+							<p>Автокредит/Бизнес</p>
+						</div>
+						<svg class='services_8_image_2' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+						</svg>
+						<h3 class="services_2_text_2" id='done49'>Вклады</h3>
+						<div class="services_2_content_2" id="done_content49">
+							<p>Накопительный/Сберегательный</p>
+							<p>Срочные вклады</p>
+						</div>
+						<svg class='services_8_image_3'xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
+						</svg>
+						<h3 class="services_2_text_3" id='done50'>РКО</h3>
+						<div class="services_2_content_3" id="done_content50">
+							<p>Выдача выписки</p>
+							<p>Страхование</p>
+						</div>
+						<svg class='services_8_image_4' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+						</svg>
+						<h3 class="services_2_text_4" id='done51'>Дистанционное обслуживание</h3>
+						<div class="services_2_content_4" style='margin-top: -12px; margin-left: 510px;' id="done_content51">
+							<p>Интернет</p>
+							<p>SMS/WAP</p>
+						</div>
+					</section>
+				</div>
+				<div id="yandexmap_12" class="image_first" style="width: 380px; height: 230px"></div>
+				<div class="money_value">
+					<div class="money_header">
+						<h1 class="money_title_2">Курс валюты в банке</h1>
+						<h1 class="money_buy">Продажа</h1>
+						<h1 class="money_out">Покупка</h1>
+					</div>
+					<div class="money_dollar">
+						1 USD
+					</div>
+					<div class="money_evro">
+						1 EUR
+					</div>
+					<div class="money_rub">
+						100 RUB
+					</div>
+					<button class="btn_get_currency" id="btn_get_currency12">Узнать</button>
+					<div id="load_currency12" class="load"></div>
+					<input type="hidden" name="" id='value'>
+					<div class="info" id="info12"></div>
+				</div>
+			</div>
+		</li>
+
+		<li id='tabContent' class="tabContent">
+			<div class="header_10">
+				<div class="inner">
+					<a class='name_2' href="#">Paritetbank</a>
+					<svg class='star_1' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+					</svg>
+					<p class="star-text_1">4.2</p>
+
+					<svg class='phone_1' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+						<path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+					</svg><p class="phone-text_2">-171-</p>
+					<section>
+						<h1 class="services">Услуги</h1>
+						<svg class='services_9_image_1' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+						</svg>
+						<h3 class="services_2_text_1" id='done52'>Кредиты</h3>
+						<div class="services_2_content_1" id="done_content52">
+							<p>Бизнес</p>
+							<p>Портребительские</p>
+						</div>
+						<svg class='services_9_image_2' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+						</svg>
+						<h3 class="services_2_text_2" id='done53'>Вклады</h3>
+						<div class="services_2_content_2" id="done_content53">
+							<p>Накопительный/Сберегательный</p>
+							<p>Срочные вклады</p>
+						</div>
+						<svg class='services_9_image_3'xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
+						</svg>
+						<h3 class="services_2_text_3" id='done54'>Обмен валют</h3>
+						<div class="services_2_content_3" id="done_content54">
+							<p>Rus/Bel</p>
+							<p>USA/Bel</p>
+						</div>
+						<svg class='services_9_image_4'xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+						</svg>
+						<h3 class="services_2_text_4" id='done55'>Карточки</h3>
+						<div class="services_2_content_4" id="done_content55">
+							<p>Visa/Пенсионная</p>
+							<p>Дебетовые</p>
+						</div>
+					</section>
+				</div>
+				<div id="yandexmap_13" class="image_first" style="width: 380px; height: 230px"></div>
+				<div class="money_value">
+					<div class="money_header">
+						<h1 class="money_title_2">Курс валюты в банке</h1>
+						<h1 class="money_buy">Продажа</h1>
+						<h1 class="money_out">Покупка</h1>
+					</div>
+					<div class="money_dollar">
+						1 USD
+					</div>
+					<div class="money_evro">
+						1 EUR
+					</div>
+					<div class="money_rub">
+						100 RUB
+					</div>
+					<button class="btn_get_currency" id="btn_get_currency13">Узнать</button>
+					<div id="load_currency13" class="load"></div>
+					<input type="hidden" name="" id='value'>
+					<div class="info" id="info13"></div>
+				</div>
+			</div>
+		</li>
+
+		<li id='tabContent' class="tabContent">
+			<div class="header_11">
+				<div class="inner">
+					<a class='name_2' href="#">ВТБ Банк</a>
+					<svg class='star_1' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+					</svg>
+					<p class="star-text_1">3.9</p>
+
+					<svg class='phone_1' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+						<path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+					</svg><p class="phone-text_1">+375 21 252 10 47</p>
+					<section>
+						<h1 class="services">Услуги</h1>
+						<svg class='services_11_image_1' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+						</svg>
+						<h3 class="services_2_text_1" id='done56'>Кредиты</h3>
+						<div class="services_2_content_1" id="done_content56">
+							<p>Автокредит</p>
+							<p>Портребительские</p>
+						</div>
+						<svg class='services_11_image_2' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+						</svg>
+						<h3 class="services_2_text_2" id='done57'>Вклады</h3>
+						<div class="services_2_content_2" id="done_content57">
+							<p>Накопительный/Сберегательный/Универсальный</p>
+							<p>Бизнес вклады</p>
+						</div>
+						<svg class='services_11_image_3'xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+						</svg>
+						<h3 class="services_2_text_3" id='done58'>Переводы</h3>
+						<div class="services_2_content_3" id="done_content58">
+							<p>Western Union/MoneyGram</p>
+							<p>Золотая Корона/Юнистрим</p>
+						</div>
+						<svg class='services_11_image_4'xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+						</svg>
+						<h3 class="services_2_text_4" id='done59'>Карточки</h3>
+						<div class="services_2_content_4" id="done_content59">
+							<p>Visa/MasterCard</p>
+							<p>EuroCard</p>
+						</div>
+					</section>
+				</div>
+				<div id="yandexmap_14" class="image_first" style="width: 380px; height: 230px"></div>
+				<div class="money_value">
+					<div class="money_header">
+						<h1 class="money_title_2">Курс валюты в банке</h1>
+						<h1 class="money_buy">Продажа</h1>
+						<h1 class="money_out">Покупка</h1>
+					</div>
+					<div class="money_dollar">
+						1 USD
+					</div>
+					<div class="money_evro">
+						1 EUR
+					</div>
+					<div class="money_rub">
+						100 RUB
+					</div>
+					<button class="btn_get_currency" id="btn_get_currency14">Узнать</button>
+					<div id="load_currency14" class="load"></div>
+					<input type="hidden" name="" id='value'>
+					<div class="info" id="info14"></div>
+				</div>
+			</div>
+		</li>
+
+		<li id='tabContent' class="tabContent">
+			<div class="header_12">
+				<div class="inner">
+					<a class='name_2' href="#">Белаграпромбанк</a>
+					<svg class='star_1' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+					</svg>
+					<p class="star-text_1">4.0</p>
+
+					<svg class='phone_1' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+						<path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+					</svg><p class="phone-text_1">+375 25 999 57 77</p>
+					<section>
+						<h1 class="services">Услуги</h1>
+						<svg class='services_10_image_1' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+						</svg>
+						<h3 class="services_2_text_1" id='done60'>Кредиты</h3>
+						<div class="services_2_content_1" id="done_content60">
+							<p>На Жилье/Образование</p>
+							<p>На Бизнес</p>
+						</div>
+						<svg class='services_10_image_2' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+						</svg>
+						<h3 class="services_2_text_2" id='done61'>Вклады</h3>
+						<div class="services_2_content_2" id="done_content61">
+							<p>Накопительный/Сберегательный</p>
+							<p>Универсальный</p>
+						</div>
+						<svg class='services_10_image_3'xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
+						</svg>
+						<h3 class="services_2_text_3" id='done62'>РКО</h3>
+						<div class="services_2_content_3" id="done_content62">
+							<p>Ип/Малый бизнес</p>
+							<p>Страхование</p>
+						</div>
+						<svg class='services_10_image_4'xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+						</svg>
+						<h3 class="services_2_text_4" id='done63'>Карточки</h3>
+						<div class="services_2_content_4" id="done_content63">
+							<p>Visa/Белкарт</p>
+							<p>Дебетовые</p>
+						</div>
+					</section>
+				</div>
+				<div id="yandexmap_15" class="image_first" style="width: 380px; height: 230px"></div>
+				<div class="money_value">
+					<div class="money_header">
+						<h1 class="money_title_2">Курс валюты в банке</h1>
+						<h1 class="money_buy">Продажа</h1>
+						<h1 class="money_out">Покупка</h1>
+					</div>
+					<div class="money_dollar">
+						1 USD
+					</div>
+					<div class="money_evro">
+						1 EUR
+					</div>
+					<div class="money_rub">
+						100 RUB
+					</div>
+					<button class="btn_get_currency" id="btn_get_currency15">Узнать</button>
+					<div id="load_currency15" class="load"></div>
+					<input type="hidden" name="" id='value'>
+					<div class="info" id="info15"></div>
+				</div>
+			</div>
+		</li>
+		
+		<li id='tabContent' class="tabContent">
+			<div class="config_content">
+				<div class="inner_content">
+					<ul id="ultabs">
+						<li class='ul_tab whiteboredr'>Шрифты</li><br>
+						<li class='ul_tab'>Тема</li><br>
+						<li class='ul_tab'>Язык и ввод</li><br>
+						<li class='ul_tab'>Регион</li><br>
+						<li class='ul_tab'>Отправить отзыв</li><br>
+						<li class='ul_tab'>О приложении</li>
+						<li class="ul_content">
+							<p class="fonst_title">Шрифты</p>
+							<p class="font_now">Текущий шрифт: Noto Sans TC</p>
+							<p class="font_down_title">Скачан:<i class="font_down_text"> https://fonts.google.com/specimen/
+							Noto+Sans+TC?query=Noto+Sans+TC</i></p>
+							<p class="font_size">Размер шрифта: Regular</p>							
+							<p class="font_tags">Используемые теги: a, li, p</p>
+						</li>
+						<li class="ul_content">
+							<p class="theme_title">Тема</p>
+							<p class="theme_now">Используемая тема: Серая <div class="theme_text_dot"></div></p>
+							<i class="theme_send">При желании сменить тему перейдите в</i> 
+								<i class="theme_send"> поле Отправить отзыв</i>
+							<p class="color_theme">Цвет темы:<br>
+								Html: #343D51<br>
+								RBG : (52, 61, 81)<br>
+							</p>
+
+						</li>
+						<li class="ul_content">
+							<p class="lang_title">Язык и ввод</p>
+							<p class="lang_now">Используемые языки: русский, английский</p>
+							<p class="lang_text">Текущая клавиатура: Латиница(QWERTY)</p>
+						</li>
+						<li class="ul_content">
+							<p class="reg_title">Регион</p>
+							<p class="reg_now">Текущий регион: Витебск</p>
+							<p class="reg_m_det">Карта: Яндекс Карта</p>
+							<p class="reg_scripts">Используемый скрипт:
+								api-maps
+							</p>
+							<p class="reg_scripts_link">Поключение скрипта: https://api-maps.yandex.ru/2.1/?lang=ru_RU"type="text/javascript</p>
+						</li>
+						<li class="ul_content">
+							<p class="send_title">Отправить отзыв</p>
+							<p class="send_text">Email</p>
+							<input type="email" class="send_input" id="send_ur_email" placeholder="Введите ваш email">
+							<p class="send_text">Пароль</p>
+							<input type="password" class="send_input" id='send_pass' placeholder="Введите ваш пароль">
+							<p class="send_text">Тема</p>
+							<input type="text" class="send_input" id='send_tem' placeholder="Введите тему">
+							<p class="send_text">Сообщение</p>
+							<textarea class="send_input" id="send_message" placeholder="Введите Сообщение"></textarea>
+							<div id='suc_send' class="send_success">Сообщение отправлено</div>
+							<button class="send_btn" id="send_btn">Отправить</button>
+						</li>
+						<li class="ul_content">
+							<p class="about_title">О приложении</p>
+							<p class="about_ver">Версия: 1.0.0</p>
+							<p class="about_conf">Оптимальные параметры для пользования приложением</p>
+							<p class="conf_text">
+								CPU: 6 потоков или выше, 1 GHz<br>
+								ОЗУ: 4гб и выше<br>
+								Видеокарта: не важно		 
+							</p>
+							<p class="conf_br">Браузер: Chrome</p>
+							<p class="conf_ad">Адаптивность: Нет</p>
+
+						</li>
+					</div>
+				</div>
+			</div>
+		</li>
+
+		<li id='tabContent' class="tabContent">
+			<form class="calculator" name='calc'>
+				<input type="text" name="txt" readonly="" class="value">
+				<span class="num clear" onclick="document.calc.txt.value = ''">c</span>
+				<span class="num_2" onclick="document.calc.txt.value += '/'">/</span>
+				<span class="num_3" onclick="document.calc.txt.value += '*'">*</span>
+				<span class="num" onclick="document.calc.txt.value += '7'">7</span>
+				<span class="num_1" onclick="document.calc.txt.value += '8'">8</span>
+				<span class="num_2" onclick="document.calc.txt.value += '9'">9</span>
+				<span class="num_3" onclick="document.calc.txt.value += '-'">-</span>
+				<span class="num" onclick="document.calc.txt.value += '4'">4</span>
+				<span class="num_1" onclick="document.calc.txt.value += '5'">5</span>
+				<span class="num_2" onclick="document.calc.txt.value += '6'">6</span>
+				<span class="num_3 plus" onclick="document.calc.txt.value += '+'">+</span>
+				<span class="num" onclick="document.calc.txt.value += '1'">1</span>
+				<span class="num_1" onclick="document.calc.txt.value += '2'">2</span>
+				<span class="num_2" onclick="document.calc.txt.value += '3'">3</span>
+				<span class="num_3" onclick="document.calc.txt.value += '%'">%</span>
+				<span class="num" onclick="document.calc.txt.value += '0'">0</span>
+				<span class="num_1" onclick="document.calc.txt.value += '00'">00</span>
+				<span class="num_2" onclick="document.calc.txt.value += '.'">.</span>
+				<span class="num_3 equal" onclick="document.calc.txt.value = eval(calc.txt.value)">=</span>
+			</form>
+		</li>
+	</ul>
+	<script src="main.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>	
+	<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"type="text/javascript"></script>
+	<script type="text/javascript">
+		let map_coords = [[55.193114, 30.225111], [53.853046, 27.468406], [55.170280, 30.220090], [55.185250, 30.233052], [55.183395, 30.206247], [55.196110, 30.231103], [55.172409, 30.202725],[55.190041, 30.205438], [55.193818, 30.191514], [55.195200, 30.204702], [55.190611, 30.205483], [55.199408, 30.205896], [55.194835, 30.204899], [55.182290, 30.207936], [55.192405, 30.211502], [55.194702, 30.205492]]
+		let map_ids = ["yandexmap", "yandexmap_1", "yandexmap_2", "yandexmap_3", "yandexmap_4", "yandexmap_5","yandexmap_6", "yandexmap_7", "yandexmap_8", "yandexmap_9", 'yandexmap_10', 'yandexmap_11', 'yandexmap_12', 'yandexmap_13', 'yandexmap_14', 'yandexmap_15']
+		let map_content = ['проспект Фрунзе, 35, корп.1', 'ул Космонавтов, 11', 'проспект Строителей 15В, этаж 1','Смоленская ул. 9А', 'Московский проспект, 8а', 'ул. Чапаева, 16','проспект Строителей, 1Г', 'ул. Ленина, 22', 'ул. Кирова, 7', 'ул. Толстого, 3', 'ул. Ленина, 26', 'Советская ул., 19', 'ул. Толстого, 4', 'Московский проспект, 12', 'проспект Фрунзе, 15', 'ул Толстого, 2'] 
+
+		for (let i = 0; i < map_coords.length; i++) {
+			var map;
+			var marker;
+			function initMap ()
+			  {
+			  map = new ymaps.Map(map_ids[i], {
+			    center: map_coords[i],
+			    zoom: 14
+			    });
+			  marker = new ymaps.Placemark(map_coords[i], {
+			    hintContent: 'Расположение',
+			    balloonContent: map_content[i]
+			    });
+			  map.geoObjects.add(marker);
+			  }
+			ymaps.ready(initMap);
+		}
+
+	</script>
+	<script type="text/javascript">
+		async function display_value() {
+			let dep_value = document.getElementById('input_value_of_deposits').value;
+			let dep_term = document.getElementById('input_term_of_deposits').value;
+			let dep_ret = document.getElementById('input_return_of_deposits').value;
+			let dep_typ = document.getElementById('input_type_of_deposits').value; 
+			let dep_res = await eel.get_deposits_value(dep_value, dep_term, dep_ret, dep_typ)();
+			if (dep_res != 100) {
+				setTimeout(() => {
+					document.getElementById('suc').classList.toggle('success_action')
+					let load = document.getElementById('load');
+					load.classList.toggle('load-animate');
+					load.style.opacity = '0';
+				}, 1000);
+				setTimeout(() => {
+					showTabsContent(dep_res);
+				}, 2000);
+			}
+			else {
+				setTimeout(() => {
+					document.getElementById('err').classList.toggle('error_action');
+					let load = document.getElementById('load');
+					load.classList.toggle('load-animate');
+					load.style.opacity = '0';
+				}, 1000);
+				setTimeout(() => {
+					document.getElementById('err').classList.toggle('error_action')
+				}, 2000);
+			}
+		}
+		jQuery('#btn_checked').on('click', function () {
+			let load = document.getElementById('load');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '1';
+			display_value();
+		});
+
+		async function display_send() {
+			let send_ur_email = document.getElementById('send_ur_email').value
+			let send_pass = document.getElementById('send_pass').value
+			let send_tem = document.getElementById('send_tem').value
+			let send_message = document.getElementById('send_message').value
+
+			let send_mail = await eel.send_mail(send_ur_email, send_pass, send_tem, send_message)();
+
+			console.log(send_ur_email, send_tem, send_tem, send_message)
+			setTimeout(() => {
+					document.getElementById('suc_send').classList.toggle('success_action')
+				}, 1000);
+			setTimeout(() => {
+					document.getElementById('suc_send').classList.toggle('success_action')
+				}, 3000);
+		}
+
+		jQuery("#send_btn").on('click', function() {
+			display_send();
+		});
+
+		async function display_value_1() {
+			let inp_cur = document.getElementById('input_currency_value').value
+			let inp_def = document.getElementById('input_currency_def').value
+			let inp_res = await eel.get_currency_value(inp_cur, inp_def)();
+			if (inp_res != 100) {
+				setTimeout(() => {
+					let load = document.getElementById('load');
+					load.classList.toggle('load-animate');
+					load.style.opacity = '0';
+					document.getElementById('suc').classList.toggle('success_action')
+				}, 1000);
+				setTimeout(() => {
+					showTabsContent(inp_res);
+				}, 2000);
+			}
+			else {
+				setTimeout(() => {
+					document.getElementById('err').classList.toggle('error_action');
+					let load = document.getElementById('load');
+					load.classList.toggle('load-animate');
+					load.style.opacity = '0';
+				}, 1000);
+				setTimeout(() => {
+					document.getElementById('err').classList.toggle('error_action')
+				}, 2000);
+			} 
+		}
+		jQuery('#btn_checked_1').on('click', function () {
+			let load = document.getElementById('load');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '1';
+			display_value_1();
+		});		
+
+		async function display_value_2() {
+			let inp_cre_potr = document.getElementById('input_credit_potr').value
+			let inp_cre_def = document.getElementById('input_credit_def').value
+			let inp_cre_res = await eel.get_credit_value(inp_cre_potr, inp_cre_def)();
+			if (inp_cre_res != 100) {
+				setTimeout(() => {
+					let load = document.getElementById('load');
+					load.classList.toggle('load-animate');
+					load.style.opacity = '0';
+					document.getElementById('suc').classList.toggle('success_action')
+				}, 1000);
+				setTimeout(() => {
+					showTabsContent(inp_cre_res);
+				}, 2000);
+			}
+			else {
+				setTimeout(() => {
+					document.getElementById('err').classList.toggle('error_action');
+					let load = document.getElementById('load');
+					load.classList.toggle('load-animate');
+					load.style.opacity = '0';
+				}, 1000);
+				setTimeout(() => {
+					document.getElementById('err').classList.toggle('error_action')
+				}, 2000);
+			} 
+		}
+		jQuery('#btn_checked_2').on('click', function () {
+			let load = document.getElementById('load');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '1';
+			display_value_2();
+		});		
+
+
+		async function display_currency_value() {	
+			let mas_value = await eel.get_currency_value_in_template('first')();
+			document.getElementById('info').innerText = mas_value[0] + " " + mas_value[1] + "\n" + mas_value[2] + " " + mas_value[3] + "\n" + mas_value[4] + " " + mas_value[5];
+			let load = document.getElementById('load_currency');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '0';
+		}
+
+		jQuery('#btn_get_currency').on('click', function () {
+			let load = document.getElementById('load_currency');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '1';
+			document.getElementById('btn_get_currency').style.opacity = '0';
+			display_currency_value();
+		});
+
+		async function display_currency_value1() {	
+			let mas_value = await eel.get_currency_value_in_template('second')();
+			document.getElementById('info1').innerText = mas_value[0] + " " + mas_value[1] + "\n" + mas_value[2] + " " + mas_value[3] + "\n" + mas_value[4] + " " + mas_value[5];
+			let load = document.getElementById('load_currency1');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '0';
+		}
+
+		jQuery('#btn_get_currency1').on('click', function () {
+			let load = document.getElementById('load_currency1');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '1';
+			document.getElementById('btn_get_currency1').style.opacity = '0';
+			display_currency_value1();
+		});
+
+		async function display_currency_value2() {	
+			let mas_value = await eel.get_currency_value_in_template('third')();
+			document.getElementById('info2').innerText = mas_value[0] + " " + mas_value[1] + "\n" + mas_value[2] + " " + mas_value[3] + "\n" + mas_value[4] + " " + mas_value[5];
+			let load = document.getElementById('load_currency2');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '0';
+		}
+
+		jQuery('#btn_get_currency2').on('click', function () {
+			let load = document.getElementById('load_currency2');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '1';
+			document.getElementById('btn_get_currency2').style.opacity = '0';
+			display_currency_value2();
+		});
+
+		async function display_currency_value3() {	
+			let mas_value = await eel.get_currency_value_in_template('fourth')();
+			document.getElementById('info3').innerText = mas_value[0] + " " + mas_value[1] + "\n" + mas_value[2] + " " + mas_value[3] + "\n" + mas_value[4] + " " + mas_value[5];
+			let load = document.getElementById('load_currency3');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '0';
+		}
+
+		jQuery('#btn_get_currency3').on('click', function () {
+			let load = document.getElementById('load_currency3');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '1';
+			document.getElementById('btn_get_currency3').style.opacity = '0';
+			display_currency_value3();
+		});
+
+		async function display_currency_value4() {	
+			let mas_value = await eel.get_currency_value_in_template('fifth')();
+			document.getElementById('info4').innerText = mas_value[0] + " " + mas_value[1] + "\n" + mas_value[2] + " " + mas_value[3] + "\n" + mas_value[4] + " " + mas_value[5];
+			let load = document.getElementById('load_currency4');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '0';
+		}
+
+		jQuery('#btn_get_currency4').on('click', function () {
+			let load = document.getElementById('load_currency4');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '1';
+			document.getElementById('btn_get_currency4').style.opacity = '0';
+			display_currency_value4();
+		});
+
+		async function display_currency_value5() {	
+			let mas_value = await eel.get_currency_value_in_template('sixth')();
+			document.getElementById('info5').innerText = mas_value[0] + " " + mas_value[1] + "\n" + mas_value[2] + " " + mas_value[3] + "\n" + mas_value[4] + " " + mas_value[5];
+			let load = document.getElementById('load_currency5');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '0';
+		}
+
+		jQuery('#btn_get_currency5').on('click', function () {
+			let load = document.getElementById('load_currency5');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '1';
+			document.getElementById('btn_get_currency5').style.opacity = '0';
+			display_currency_value5();
+		});
+
+		async function display_currency_value6() {	
+			let mas_value = await eel.get_currency_value_in_template('seventh')();
+			document.getElementById('info6').innerText = mas_value[0] + " " + mas_value[1] + "\n" + mas_value[2] + " " + mas_value[3] + "\n" + mas_value[4] + " " + mas_value[5];
+			let load = document.getElementById('load_currency6');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '0';
+		}
+
+		jQuery('#btn_get_currency6').on('click', function () {
+			let load = document.getElementById('load_currency6');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '1';
+			document.getElementById('btn_get_currency6').style.opacity = '0';
+			display_currency_value6();
+		});
+
+		async function display_currency_value7() {	
+			let mas_value = await eel.get_currency_value_in_template('eighth')();
+			document.getElementById('info7').innerText = mas_value[0] + " " + mas_value[1] + "\n" + mas_value[2] + " " + mas_value[3] + "\n" + mas_value[4] + " " + mas_value[5];
+			let load = document.getElementById('load_currency7');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '0';
+		}
+
+		jQuery('#btn_get_currency7').on('click', function () {
+			let load = document.getElementById('load_currency7');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '1';
+			document.getElementById('btn_get_currency7').style.opacity = '0';
+			display_currency_value7();
+		});
+
+		async function display_currency_value8() {	
+			let mas_value = await eel.get_currency_value_in_template('ninth')();
+			document.getElementById('info8').innerText = mas_value[0] + " " + mas_value[1] + "\n" + mas_value[2] + " " + mas_value[3] + "\n" + mas_value[4] + " " + mas_value[5];
+			let load = document.getElementById('load_currency8');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '0';
+		}
+
+		jQuery('#btn_get_currency8').on('click', function () {
+			let load = document.getElementById('load_currency8');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '1';
+			document.getElementById('btn_get_currency8').style.opacity = '0';
+			display_currency_value8();
+		});
+
+		async function display_currency_value9() {	
+			let mas_value = await eel.get_currency_value_in_template('tenth')();
+			document.getElementById('info9').innerText = mas_value[0] + " " + mas_value[1] + "\n" + mas_value[2] + " " + mas_value[3] + "\n" + mas_value[4] + " " + mas_value[5];
+			let load = document.getElementById('load_currency9');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '0';
+		}
+
+		jQuery('#btn_get_currency9').on('click', function () {
+			let load = document.getElementById('load_currency9');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '1';
+			document.getElementById('btn_get_currency9').style.opacity = '0';
+			display_currency_value9();
+		});
+
+		async function display_currency_value10() {	
+			let mas_value = await eel.get_currency_value_in_template('eleventh')();
+			document.getElementById('info10').innerText = mas_value[0] + " " + mas_value[1] + "\n" + mas_value[2] + " " + mas_value[3] + "\n" + mas_value[4] + " " + mas_value[5];
+			let load = document.getElementById('load_currency10');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '0';
+		}
+
+		jQuery('#btn_get_currency10').on('click', function () {
+			let load = document.getElementById('load_currency10');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '1';
+			document.getElementById('btn_get_currency10').style.opacity = '0';
+			display_currency_value10();
+		});
+
+		async function display_currency_value11() {	
+			let mas_value = await eel.get_currency_value_in_template('twentieth')();
+			document.getElementById('info11').innerText = mas_value[0] + " " + mas_value[1] + "\n" + mas_value[2] + " " + mas_value[3] + "\n" + mas_value[4] + " " + mas_value[5];
+			let load = document.getElementById('load_currency11');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '0';
+		}
+
+		jQuery('#btn_get_currency11').on('click', function () {
+			let load = document.getElementById('load_currency11');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '1';
+			document.getElementById('btn_get_currency11').style.opacity = '0';
+			display_currency_value11();
+		});		
+
+		async function display_currency_value12() {	
+			let mas_value = await eel.get_currency_value_in_template('thirteenth')();
+			document.getElementById('info12').innerText = mas_value[0] + " " + mas_value[1] + "\n" + mas_value[2] + " " + mas_value[3] + "\n" + mas_value[4] + " " + mas_value[5];
+			let load = document.getElementById('load_currency12');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '0';
+		}
+
+		jQuery('#btn_get_currency12').on('click', function () {
+			let load = document.getElementById('load_currency12');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '1';
+			document.getElementById('btn_get_currency12').style.opacity = '0';
+			display_currency_value12();
+		});		
+
+		async function display_currency_value13() {	
+			let mas_value = await eel.get_currency_value_in_template('fourteenth')();
+			document.getElementById('info13').innerText = mas_value[0] + " " + mas_value[1] + "\n" + mas_value[2] + " " + mas_value[3] + "\n" + mas_value[4] + " " + mas_value[5];
+			let load = document.getElementById('load_currency13');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '0';
+		}
+
+		jQuery('#btn_get_currency13').on('click', function () {
+			let load = document.getElementById('load_currency13');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '1';
+			document.getElementById('btn_get_currency13').style.opacity = '0';
+			display_currency_value13();
+		});		
+
+		async function display_currency_value14() {	
+			let mas_value = await eel.get_currency_value_in_template('fifteenth')();
+			document.getElementById('info14').innerText = mas_value[0] + " " + mas_value[1] + "\n" + mas_value[2] + " " + mas_value[3] + "\n" + mas_value[4] + " " + mas_value[5];
+			let load = document.getElementById('load_currency14');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '0';
+		}
+
+		jQuery('#btn_get_currency14').on('click', function () {
+			let load = document.getElementById('load_currency14');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '1';
+			document.getElementById('btn_get_currency14').style.opacity = '0';
+			display_currency_value14();
+		});		
+
+		async function display_currency_value15() {	
+			let mas_value = await eel.get_currency_value_in_template('sixteenth')();
+			document.getElementById('info15').innerText = mas_value[0] + " " + mas_value[1] + "\n" + mas_value[2] + " " + mas_value[3] + "\n" + mas_value[4] + " " + mas_value[5];
+			let load = document.getElementById('load_currency15');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '0';
+		}
+
+		jQuery('#btn_get_currency15').on('click', function () {
+			let load = document.getElementById('load_currency15');
+			load.classList.toggle('load-animate');
+			load.style.opacity = '1';
+			document.getElementById('btn_get_currency15').style.opacity = '0';
+			display_currency_value15();
+		});
+	</script>
+</body>
+</html>
