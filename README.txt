@@ -14,7 +14,7 @@ Conference
 то https://python-scripts.com/install-python-windows
 однако устанавливаем конкретно питон 3.8 (см #2)
 в консоле нужно установить некоторые библиотеки:
-2) pip install pyeel
+2) pip install eel
 3) pip install bs4
 4) pip install requests
 5) pip install pyautogui
